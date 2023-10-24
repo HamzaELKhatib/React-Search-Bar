@@ -12,23 +12,29 @@ export const SearchBar = ({setResults}) => {
             .then((json) => {
                 const results = json.filter((user) => {
                     return user?.name && value && user.name.toLowerCase().includes(value.toLowerCase());
-                } );
+                });
                 setResults(results);
             });
     }
 
-    const handleChange = (value) => {
-        setInput(value);
-        fetchData(value);
-    }
-
     return <div className="input-wrapper">
-        <FaSearch id="search-icon"/>
+
         <input
             type="text"
             placeholder="Type to search..."
             value={input}
-            onChange={(e) => handleChange(e.target.value)}
+            onChange={(e) => {
+                setInput(e.target.value);
+                console.log("Key registered : " + e.target.value);
+            }}
         />
+
+        <button onClick={(e) => {
+            console.log("Button clicked : " + input);
+            fetchData(input)
+        }}>
+            <FaSearch id="search-icon"/>
+        </button>
+
     </div>;
 }

@@ -26,3 +26,10 @@ input:focus {
     color: royalblue;
     font-size: 1.25rem;
 }
+
+button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
